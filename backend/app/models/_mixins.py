@@ -3,13 +3,14 @@ from datetime import datetime
 from uuid import UUID, uuid4
 
 from sqlalchemy import DateTime, func
-from sqlalchemy.dialects.postgresql import UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column
+
+from app.core.database import GUID
 
 
 class UUIDPrimaryKey:
     id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         primary_key=True,
         default=uuid4,
     )

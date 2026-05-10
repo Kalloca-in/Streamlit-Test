@@ -8,10 +8,9 @@ así lo configura. NO se solicita ni almacena ningún OSINT del usuario.
 from uuid import UUID
 
 from sqlalchemy import Boolean, ForeignKey, String
-from sqlalchemy.dialects.postgresql import UUID as PgUUID
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column
 
-from app.core.database import Base
+from app.core.database import Base, GUID
 from app.models._mixins import Timestamped, UUIDPrimaryKey
 
 
@@ -24,7 +23,7 @@ class Usuario(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "usuarios"
 
     organizacion_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("organizaciones.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
@@ -47,7 +46,7 @@ class Facilitador(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "facilitadores"
 
     organizacion_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("organizaciones.id", ondelete="CASCADE"),
         index=True,
         nullable=False,

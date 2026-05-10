@@ -16,11 +16,21 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app import __version__
 from app.core.config import get_settings
+from app.core.database import Base, engine
 
 # Importar `app.models` registra todos los modelos en SQLAlchemy.
 # El `noqa` evita que un linter lo elimine: el import tiene side-effect deliberado.
 import app.models  # noqa: F401
-from app.routers import health
+from app.routers import (
+    dias_triples,
+    disecciones,
+    health,
+    marcas,
+    personajes,
+    reportes,
+    sesiones,
+    usuarios,
+)
 from app.services.anthropic_client import get_anthropic_service
 from app.services.marcas_catalog import cargar_catalogo
 
@@ -35,6 +45,13 @@ async def lifespan(app: FastAPI):
 
     catalogo = cargar_catalogo()
     log.info("Catálogo de marcas ficticias cargado: %d entradas", len(catalogo))
+
+    # En entornos de desarrollo / SQLite, crea las tablas si faltan.
+    if settings.environment in {"development", "test"} or settings.database_url.startswith(
+        "sqlite"
+    ):
+        Base.metadata.create_all(bind=engine)
+        log.info("Tablas creadas/verificadas (modo dev).")
 
     # Hook para el safety_filter (lo provee el Bloque 2).
     # Si el módulo está disponible, se conecta al cliente Anthropic.
@@ -73,3 +90,10 @@ app.add_middleware(
 )
 
 app.include_router(health.router)
+app.include_router(marcas.router)
+app.include_router(personajes.router)
+app.include_router(dias_triples.router)
+app.include_router(sesiones.router)
+app.include_router(disecciones.router)
+app.include_router(usuarios.router)
+app.include_router(reportes.router)

@@ -11,10 +11,9 @@ from datetime import datetime
 from uuid import UUID
 
 from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
-from sqlalchemy.dialects.postgresql import JSONB, UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.core.database import Base
+from app.core.database import Base, GUID, JSONType
 from app.core.enums import EstadoSesion, Rol
 from app.models._mixins import Timestamped, UUIDPrimaryKey
 
@@ -23,18 +22,18 @@ class Sesion(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "sesiones"
 
     usuario_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("usuarios.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
     )
     personaje_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("personajes.id", ondelete="RESTRICT"),
         nullable=False,
     )
     dia_triple_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("dias_triples.id", ondelete="RESTRICT"),
         nullable=False,
     )
@@ -61,13 +60,13 @@ class Decision(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "decisiones"
 
     sesion_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("sesiones.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
     )
     acto_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("actos.id", ondelete="CASCADE"),
         nullable=False,
     )
@@ -75,7 +74,7 @@ class Decision(UUIDPrimaryKey, Timestamped, Base):
     opcion_elegida: Mapped[str] = mapped_column(String(20), nullable=False)
     fue_segura: Mapped[bool] = mapped_column(nullable=False)
     # Indicadores que el usuario marcó (si la UI lo permite). Lista de UUIDs.
-    indicadores_detectados: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    indicadores_detectados: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
 
     sesion: Mapped["Sesion"] = relationship("Sesion", back_populates="decisiones")
 
@@ -89,7 +88,7 @@ class Reflexion(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "reflexiones"
 
     sesion_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("sesiones.id", ondelete="CASCADE"),
         unique=True,
         nullable=False,

@@ -1,0 +1,543 @@
+[
+  {
+    "personaje": {
+      "nombre": "Carla Núñez",
+      "edad": 38,
+      "arquetipo": "guardian_financiero",
+      "nivel_sugerido": 2,
+      "cargo_ficticio": "Jefa de cuentas por cobrar",
+      "empresa_ficticia": "NexoFin Servicios",
+      "contexto_familiar": "Vive con su pareja y un perro adoptado. Sus padres viven en otra ciudad y los visita una vez al mes.",
+      "habitos_consumo": "Banca por aplicación a diario, compra electrodomésticos en Tienda Cronos cada año, suscripción a StreamColibrí desde hace tres años.",
+      "vector_exposicion": {
+        "redes": ["publica fotos de su perro los domingos", "comenta reseñas en MercadoFácil"],
+        "rutinas": ["llega a la oficina 7:45", "yoga sábados 8am", "supermercado domingos en la tarde"],
+        "consumos": ["Banco Ribera Sur (cuenta principal)", "MercadoFácil (mensual)", "StreamColibrí (familiar)"]
+      },
+      "marcas_asociadas": ["banco-ribera-sur", "nexofin-servicios", "streamcolibri", "mercadofacil", "tienda-cronos"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Carla — el gancho de la urgencia",
+      "gancho_psicologico_raiz": "urgencia",
+      "nivel_dificultad": 2,
+      "nota_revelacion": "Los tres mensajes que vivió Carla usaron urgencia artificial: dos horas, hoy mismo, antes de las 11pm. Cambió el canal —SMS, correo, mensajería instantánea— y cambió la marca —banco, empresa, streaming—, pero la trampa es la misma. La urgencia secuestra la verificación. Carla, igual que tú, es la misma persona en los tres roles, y el atacante lo sabe.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "sms",
+          "hora_dramatizada": "07:30",
+          "remitente_aparente": "+593 99 BANCO",
+          "asunto": null,
+          "cuerpo": "[BANCO RIBERA SUR] Detectamos un cargo no reconocido por $480. Si NO fue usted, debe verificar su cuenta en las próximas 2 horas en https://bancoriberasur-seguro.example/verify o su tarjeta será bloqueada permanentemente. Atención al cliente.",
+          "marca_ficticia_slug": "banco-ribera-sur",
+          "opciones_decision": [
+            {"id": "a", "texto": "Tocar el enlace y verificar de inmediato", "consecuencia": "Carla entra en una página falsa y sus credenciales viajan al atacante.", "es_segura": false},
+            {"id": "b", "texto": "Llamar al número impreso en su tarjeta y consultar", "consecuencia": "El banco confirma que no envió el SMS. Carla bloquea preventivamente.", "es_segura": true},
+            {"id": "c", "texto": "Ignorar el SMS y abrir la app del banco directamente", "consecuencia": "No hay alerta en la app. Carla evita el fraude.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "urgencia_artificial", "fragmento": "en las próximas 2 horas", "explicacion": "El reloj inventado fuerza a actuar antes de pensar. Un banco real no opera con plazos tan cortos."},
+            {"tipo": "dominio_sospechoso", "fragmento": "bancoriberasur-seguro.example", "explicacion": "El sufijo '-seguro' agregado al dominio del banco es la firma de un dominio falsificado."},
+            {"tipo": "remitente_anomalo", "fragmento": "+593 99 BANCO", "explicacion": "Las marcas de banca regulada no envían SMS desde números celulares con etiqueta improvisada."},
+            {"tipo": "amenaza_velada", "fragmento": "será bloqueada permanentemente", "explicacion": "La amenaza implícita —perder el acceso— es el motor emocional del fraude."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "11:00",
+          "remitente_aparente": "Gerencia General <gg@nexofin-servicios.test>",
+          "asunto": "URGENTE — validación de proveedor antes de mediodía",
+          "cuerpo": "Carla, necesito que valides el cambio de cuenta del proveedor Logística Andes ANTES de las 12:00 hoy. Adjunto el formulario en https://nexofin-portalrrhh.example/validar — completa con tus credenciales internas para autorizar. No me pongas en copia, estoy en directorio. — Mateo, Gerente General.",
+          "marca_ficticia_slug": "nexofin-servicios",
+          "opciones_decision": [
+            {"id": "a", "texto": "Hacer clic, autenticarse y autorizar el cambio", "consecuencia": "Sus credenciales internas son robadas y el proveedor falso queda autorizado.", "es_segura": false},
+            {"id": "b", "texto": "Llamar a Mateo a su extensión interna para confirmar", "consecuencia": "Mateo no envió el correo. TI inicia respuesta a incidente.", "es_segura": true},
+            {"id": "c", "texto": "Reportar el correo al equipo de TI sin tocar el enlace", "consecuencia": "TI confirma fraude y bloquea el dominio. Carla recibe agradecimiento.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "urgencia_artificial", "fragmento": "ANTES de las 12:00 hoy", "explicacion": "Mismo patrón del SMS de la mañana: el reloj inventado anula el reflejo de verificar."},
+            {"tipo": "autoridad_no_verificable", "fragmento": "Mateo, Gerente General", "explicacion": "El pretexto invoca autoridad jerárquica para silenciar dudas. La autoridad real soporta verificación."},
+            {"tipo": "incongruencia_canal", "fragmento": "No me pongas en copia, estoy en directorio", "explicacion": "Pedir explícitamente que no se copie a nadie es la marca de un fraude que teme la verificación cruzada."},
+            {"tipo": "dominio_sospechoso", "fragmento": "nexofin-portalrrhh.example", "explicacion": "Subdominio inventado: el portal real de RR.HH. tiene otro subdominio. Pequeñas alteraciones esconden grandes fraudes."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "completa con tus credenciales internas para autorizar", "explicacion": "Una validación de proveedor no debe pedir credenciales del colaborador. Es el síntoma."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "whatsapp",
+          "hora_dramatizada": "19:00",
+          "remitente_aparente": "StreamColibrí · Soporte",
+          "asunto": null,
+          "cuerpo": "Hola Carla, tu plan familiar StreamColibrí vence HOY a las 23:59. Renovación 2x1 disponible solo por las próximas 2 horas: bit.example/strm-renueva — actualiza tu tarjeta para no perder los perfiles guardados.",
+          "marca_ficticia_slug": "streamcolibri",
+          "opciones_decision": [
+            {"id": "a", "texto": "Tocar el enlace y actualizar la tarjeta", "consecuencia": "Sus datos bancarios viajan al atacante. Pierde acceso real al servicio.", "es_segura": false},
+            {"id": "b", "texto": "Abrir la app oficial de StreamColibrí y revisar el estado", "consecuencia": "El plan está vigente. El mensaje era falso.", "es_segura": true},
+            {"id": "c", "texto": "Ignorar y reportar como spam", "consecuencia": "La app de chat recibe el reporte. Sin daño.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "urgencia_artificial", "fragmento": "solo por las próximas 2 horas", "explicacion": "Misma trampa, tercer disfraz. La urgencia es el gancho raíz; el streaming es solo el envoltorio."},
+            {"tipo": "enlace_acortado", "fragmento": "bit.example/strm-renueva", "explicacion": "Acortadores ocultan el destino real del enlace. Las marcas legítimas casi nunca los usan."},
+            {"tipo": "oferta_desproporcionada", "fragmento": "Renovación 2x1", "explicacion": "Una promoción agresiva combinada con plazo cortísimo es señal de presión."},
+            {"tipo": "incongruencia_canal", "fragmento": "Soporte", "explicacion": "Los servicios de streaming notifican vencimientos por la app y por correo, no por mensajería instantánea en frío."}
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "personaje": {
+      "nombre": "Diego Salas",
+      "edad": 45,
+      "arquetipo": "ejecutivo_transito",
+      "nivel_sugerido": 3,
+      "cargo_ficticio": "Director de operaciones regionales",
+      "empresa_ficticia": "Atrio Logística",
+      "contexto_familiar": "Casado, dos hijos en colegio. Viaja entre ciudades dos veces por semana.",
+      "habitos_consumo": "Aerolínea ficticia para vuelos cortos, cuenta empresarial en Banco Cordillera del Sol, AudioCantares en sus traslados.",
+      "vector_exposicion": {
+        "redes": ["publica fotos de aeropuertos en LinkedIn ficticio", "comparte logros del equipo"],
+        "rutinas": ["vuelos lunes y miércoles", "reunión semanal con su jefa los viernes 9am"],
+        "consumos": ["Banco Cordillera del Sol (cuenta empresa)", "AudioCantares (cuando viaja)"]
+      },
+      "marcas_asociadas": ["banco-cordillera-del-sol", "atrio-logistica", "audiocantares", "viasinfin"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Diego — el gancho de la autoridad",
+      "gancho_psicologico_raiz": "autoridad",
+      "nivel_dificultad": 3,
+      "nota_revelacion": "Los tres mensajes invocaron a alguien con poder sobre Diego: el directorio, su jefa, una entidad pública ficticia. La autoridad es atajo cognitivo; quien la invoca espera que el receptor obedezca antes de verificar. Pero la autoridad real soporta —y agradece— ser verificada. Diego es el mismo en los tres roles; los atacantes lo saben.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "correo",
+          "hora_dramatizada": "08:00",
+          "remitente_aparente": "Vialidad del Sur · Notificaciones <multas@vialidad-delsur.example>",
+          "asunto": "Notificación oficial — Multa pendiente de pago",
+          "cuerpo": "Estimado Sr. Salas, conforme a la Resolución 2024-VLS-0481 emitida por la Dirección de Vialidad del Sur, registra una multa de tránsito impaga por exceso de velocidad. Plazo perentorio: 24 horas. Acceda al expediente con su número de cédula en https://vialidad-delsur.example/expediente — incumplir genera embargo automático.",
+          "marca_ficticia_slug": "vialidad-del-sur",
+          "opciones_decision": [
+            {"id": "a", "texto": "Ingresar la cédula en el portal y revisar", "consecuencia": "Su cédula y datos de contacto pasan al atacante.", "es_segura": false},
+            {"id": "b", "texto": "Verificar entrando manualmente al portal oficial de Vialidad del Sur", "consecuencia": "No hay multa. Diego reporta el correo.", "es_segura": true},
+            {"id": "c", "texto": "Llamar a la línea oficial publicada en la web del organismo", "consecuencia": "Confirman fraude. Diego avisa a su área legal.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "autoridad_no_verificable", "fragmento": "Resolución 2024-VLS-0481", "explicacion": "Un número de resolución suena oficial. Una resolución real es verificable en el portal del organismo, no por enlace adjunto."},
+            {"tipo": "amenaza_velada", "fragmento": "incumplir genera embargo automático", "explicacion": "La amenaza administrativa busca paralizar el pensamiento crítico."},
+            {"tipo": "dominio_sospechoso", "fragmento": "vialidad-delsur.example", "explicacion": "Guion intermedio en el dominio: alteración común para imitar el sitio real."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "con su número de cédula", "explicacion": "El número de cédula no debería ser la única credencial para acceder a un expediente."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "12:30",
+          "remitente_aparente": "Patricia Maldonado, CFO <p.maldonado@atriologistlca.test>",
+          "asunto": "RE: Pago urgente proveedor — confidencial",
+          "cuerpo": "Diego, necesito autorices la transferencia adjunta a Industrias Caoba antes de las 14:00. Es por el cierre del trimestre, no puedo entrar en detalles ahora. Estoy en directorio sin acceso al ERP. Confío en que lo manejes con discreción y sin escalarlo a otros gerentes hasta que regrese. Cuenta destino y monto en el adjunto. — Patricia.",
+          "marca_ficticia_slug": "atrio-logistica",
+          "opciones_decision": [
+            {"id": "a", "texto": "Autorizar la transferencia siguiendo las instrucciones", "consecuencia": "Atrio Logística pierde una suma significativa transferida a una cuenta del atacante.", "es_segura": false},
+            {"id": "b", "texto": "Llamar a Patricia a su celular conocido para validar", "consecuencia": "Patricia no envió nada. Se activa respuesta a fraude BEC.", "es_segura": true},
+            {"id": "c", "texto": "Reportar a TI y al equipo de tesorería sin actuar", "consecuencia": "Se contiene el fraude antes del primer movimiento.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "remitente_anomalo", "fragmento": "atriologistlca.test", "explicacion": "Mira con cuidado: 'l' en lugar de 'i'. Lookalike clásico de BEC."},
+            {"tipo": "autoridad_no_verificable", "fragmento": "Patricia Maldonado, CFO", "explicacion": "El nombre del CFO es la autoridad invocada. La autoridad real responde una llamada de validación."},
+            {"tipo": "urgencia_artificial", "fragmento": "antes de las 14:00", "explicacion": "Plazo cortísimo y artificial: fuerza saltar el control dual de tesorería."},
+            {"tipo": "incongruencia_canal", "fragmento": "sin escalarlo a otros gerentes", "explicacion": "Pedir confidencialidad para una operación financiera es el sello del fraude del CEO."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "llamada",
+          "hora_dramatizada": "20:15",
+          "remitente_aparente": "Banco Cordillera del Sol · Mesa Empresarial",
+          "asunto": "Verificación de operación reciente",
+          "cuerpo": "Sr. Salas, soy Andrea de la Mesa Empresarial de Banco Cordillera del Sol. Detectamos un movimiento inusual en su cuenta empresa por $14.800 hace minutos. Como ejecutivo VIP, le tomo la verificación en línea: ¿me confirma los últimos 4 dígitos de su token físico y el código que le envió el sistema al SMS para revertir? Estoy autorizada por la Gerencia para asistirle directamente.",
+          "marca_ficticia_slug": "banco-cordillera-del-sol",
+          "opciones_decision": [
+            {"id": "a", "texto": "Confirmar los códigos para 'revertir' la operación", "consecuencia": "El atacante completa la transferencia con las credenciales que Diego le entregó.", "es_segura": false},
+            {"id": "b", "texto": "Cortar y llamar al banco al número impreso en la tarjeta", "consecuencia": "El banco confirma que no había operación. Diego cambia credenciales.", "es_segura": true},
+            {"id": "c", "texto": "Pedir que le envíen un correo oficial y verificar luego", "consecuencia": "El correo nunca llega. Diego comprende el intento de fraude.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "autoridad_no_verificable", "fragmento": "autorizada por la Gerencia para asistirle directamente", "explicacion": "Apela a una jerarquía interna que el cliente no puede verificar en tiempo real."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "los últimos 4 dígitos de su token físico y el código que le envió el sistema al SMS", "explicacion": "Ningún banco real solicita códigos de un solo uso por teléfono. Esa regla no tiene excepción."},
+            {"tipo": "urgencia_artificial", "fragmento": "le tomo la verificación en línea", "explicacion": "La 'verificación inmediata' impide al cliente cortar y llamar al canal oficial."},
+            {"tipo": "incongruencia_canal", "fragmento": "Mesa Empresarial", "explicacion": "Las mesas empresariales no llaman en frío para pedir códigos OTP."}
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "personaje": {
+      "nombre": "Mariela Vargas",
+      "edad": 29,
+      "arquetipo": "rostro_experiencias",
+      "nivel_sugerido": 1,
+      "cargo_ficticio": "Coordinadora de marketing de experiencias",
+      "empresa_ficticia": "Konsultora Trébol",
+      "contexto_familiar": "Vive sola con su gata. Comparte mucho en redes ficticias del trabajo y de viajes cortos.",
+      "habitos_consumo": "MercadoFácil semanal, RápidoYa para almuerzos, AudioCantares todo el día.",
+      "vector_exposicion": {
+        "redes": ["sube stories del café que toma cada mañana", "etiqueta a marcas en sus posts"],
+        "rutinas": ["café 8:30 cerca de la oficina", "almuerzo por delivery"],
+        "consumos": ["MercadoFácil (3 compras al mes)", "RápidoYa (4 veces por semana)"]
+      },
+      "marcas_asociadas": ["mercadofacil", "rapidoya", "audiocantares", "konsultora-trebol", "banco-vertice"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Mariela — el gancho de la prueba social",
+      "gancho_psicologico_raiz": "prueba_social",
+      "nivel_dificultad": 1,
+      "nota_revelacion": "A Mariela la convencieron de que 'todos lo están haciendo': sus contactos, su equipo, su comunidad. La prueba social es atajo: si muchos lo hacen, parece seguro. Pero el rumor digital es trivialmente falsificable. Cuando alguien presiona con 'tus colegas ya respondieron', verifica con UN colega real, no con la pantalla.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "whatsapp",
+          "hora_dramatizada": "07:50",
+          "remitente_aparente": "+593 98 ENCUESTAS",
+          "asunto": null,
+          "cuerpo": "Hola! Somos AudioCantares. 12.482 personas de tu ciudad ya completaron la encuesta de 2 minutos y reciben 6 meses gratis. Cierra hoy. Únete: encuesta-audiocantares.example/regalo — solo necesitamos confirmar tu correo y el código que te llega.",
+          "marca_ficticia_slug": "audiocantares",
+          "opciones_decision": [
+            {"id": "a", "texto": "Hacer la encuesta y ingresar el código", "consecuencia": "Su cuenta de AudioCantares queda secuestrada. El número se vende para más fraudes.", "es_segura": false},
+            {"id": "b", "texto": "Buscar la promoción en la app oficial", "consecuencia": "No existe tal promoción. Reporta el mensaje.", "es_segura": true},
+            {"id": "c", "texto": "Preguntar en su grupo de amigas si recibieron lo mismo", "consecuencia": "Algunas también. Confirman que es spam masivo.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "oferta_desproporcionada", "fragmento": "6 meses gratis", "explicacion": "Una recompensa muy grande por una acción muy pequeña casi siempre es señal de fraude."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "el código que te llega", "explicacion": "Ese código es la llave de tu cuenta. Nunca se entrega por enlace, encuesta o teléfono."},
+            {"tipo": "dominio_sospechoso", "fragmento": "encuesta-audiocantares.example", "explicacion": "Subdominio armado para parecerse al oficial. La marca real usa solo audiocantares.example."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "11:15",
+          "remitente_aparente": "Equipo People · Konsultora Trébol <people@konsultoratrebol.test>",
+          "asunto": "Onboarding al nuevo portal interno — 38 colegas ya entraron",
+          "cuerpo": "Mariela, ya el 78% del equipo activó su acceso al nuevo portal interno de Konsultora Trébol. Solo te falta a ti y a otras 4 personas. Activa con tus credenciales en https://portal-trebol-interno.example. Recuerda que es obligatorio para acceder al directorio del lunes.",
+          "marca_ficticia_slug": "konsultora-trebol",
+          "opciones_decision": [
+            {"id": "a", "texto": "Activar el acceso ingresando las credenciales", "consecuencia": "Sus credenciales internas son robadas y se usan para movimiento lateral.", "es_segura": false},
+            {"id": "b", "texto": "Preguntar en el canal de su equipo si alguien lo activó", "consecuencia": "Nadie lo conoce. Reporta a TI.", "es_segura": true},
+            {"id": "c", "texto": "Ir físicamente al área de TI a confirmar", "consecuencia": "TI confirma que no hay portal nuevo.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "urgencia_artificial", "fragmento": "te falta a ti y a otras 4 personas", "explicacion": "El conteo decreciente fabrica presión: parece que estás retrasando al equipo."},
+            {"tipo": "dominio_sospechoso", "fragmento": "portal-trebol-interno.example", "explicacion": "El portal interno real está bajo el dominio de la empresa, no en uno externo."},
+            {"tipo": "incongruencia_canal", "fragmento": "Equipo People", "explicacion": "Cambios de portal se anuncian internamente y por canales conocidos, no por correo aislado con enlace."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "app_notificacion",
+          "hora_dramatizada": "21:00",
+          "remitente_aparente": "MercadoFácil · Comunidad",
+          "asunto": null,
+          "cuerpo": "¡Trending hoy! 1.342 compradoras como tú aprovecharon el cupón privado VIP-MAR — disponible solo para tu perfil esta noche. Activa en mercadofacil-vip.example y úsalo antes de medianoche.",
+          "marca_ficticia_slug": "mercadofacil",
+          "opciones_decision": [
+            {"id": "a", "texto": "Tocar el botón y activar el cupón ingresando datos", "consecuencia": "El cupón es falso. Mariela entrega tarjeta y contacto.", "es_segura": false},
+            {"id": "b", "texto": "Abrir la app oficial y buscar el cupón en su perfil", "consecuencia": "No existe. Marca como spam.", "es_segura": true},
+            {"id": "c", "texto": "Comparar con su grupo de chat de compras", "consecuencia": "Otras también recibieron lo mismo: es masivo.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "oferta_desproporcionada", "fragmento": "cupón privado VIP-MAR", "explicacion": "Un cupón 'privado masivo' es una contradicción: la oferta exclusiva no se anuncia a 1.342 personas."},
+            {"tipo": "urgencia_artificial", "fragmento": "antes de medianoche", "explicacion": "El plazo de horas es la firma de la presión inducida."},
+            {"tipo": "dominio_sospechoso", "fragmento": "mercadofacil-vip.example", "explicacion": "Subdominio con sufijo: la app real usa mercadofacil.example."}
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "personaje": {
+      "nombre": "Andrés Fonseca",
+      "edad": 52,
+      "arquetipo": "cuidador_familiar",
+      "nivel_sugerido": 2,
+      "cargo_ficticio": "Supervisor de planta",
+      "empresa_ficticia": "Industrias Caoba",
+      "contexto_familiar": "Padre de tres adolescentes. Sus hijos estudian en el Liceo Los Cedros. Su madre vive con él.",
+      "habitos_consumo": "Banca por cajero, GasNor mensual, paga el colegio puntual cada mes.",
+      "vector_exposicion": {
+        "redes": ["casi no publica, pero comparte fotos familiares en grupos cerrados"],
+        "rutinas": ["lleva a sus hijos al colegio antes de entrar a la planta"],
+        "consumos": ["Liceo Los Cedros (matrícula y mensualidades)", "GasNor (mensual)"]
+      },
+      "marcas_asociadas": ["liceo-los-cedros", "industrias-caoba", "gasnor", "banco-lumen"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Andrés — el gancho del miedo",
+      "gancho_psicologico_raiz": "miedo",
+      "nivel_dificultad": 2,
+      "nota_revelacion": "Tres mensajes le hablaron a Andrés del peligro: a su hijo en el colegio, a su rol en la planta, a su casa. El miedo apaga el pensamiento crítico y enciende el cuerpo. La regla en seguridad es la opuesta a la del incendio: cuando un mensaje te apura por miedo, detente, respira, verifica por otro canal. Una emergencia real soporta una llamada extra.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "sms",
+          "hora_dramatizada": "07:45",
+          "remitente_aparente": "Liceo Los Cedros · Coordinación",
+          "asunto": null,
+          "cuerpo": "Sr. Fonseca, su hijo Sebastián tuvo un incidente leve esta mañana. Necesitamos su autorización por escrito en los próximos 30 minutos para coordinar atención médica. Acceda con su cédula a https://liceoloscedros-emergencia.example/autoriza. Coordinación.",
+          "marca_ficticia_slug": "liceo-los-cedros",
+          "opciones_decision": [
+            {"id": "a", "texto": "Acceder al enlace e ingresar la cédula para autorizar", "consecuencia": "Su cédula y datos de contacto pasan al atacante. Tarda en darse cuenta porque va camino al colegio.", "es_segura": false},
+            {"id": "b", "texto": "Llamar inmediatamente al colegio al número conocido", "consecuencia": "Sebastián está bien. El colegio confirma que no envió el mensaje.", "es_segura": true},
+            {"id": "c", "texto": "Llamar a su esposa para que verifique mientras él maneja", "consecuencia": "Su esposa confirma con la coordinadora real que es falso.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "urgencia_artificial", "fragmento": "en los próximos 30 minutos", "explicacion": "Un colegio real no fija plazos de 30 minutos: llama al padre o madre directamente al teléfono."},
+            {"tipo": "incongruencia_canal", "fragmento": "Coordinación", "explicacion": "Las emergencias escolares se comunican por llamada, no por SMS con enlace."},
+            {"tipo": "dominio_sospechoso", "fragmento": "liceoloscedros-emergencia.example", "explicacion": "Subdominio fabricado para amplificar el sentido de emergencia."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "Acceda con su cédula", "explicacion": "Identificarse con la sola cédula es la grieta clásica."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "10:30",
+          "remitente_aparente": "Seguridad Industrial · Industrias Caoba <seguridad@industrias-caoba.test>",
+          "asunto": "URGENTE — auditoría sorpresa en su planta — confidencial",
+          "cuerpo": "Sr. Fonseca, recibimos reporte anónimo sobre incumplimientos graves en su línea. La auditoría externa llega mañana 7am. Para protegerlo, complete y devuelva el adjunto antes de las 17:00 con su descargo, foto de su carnet y respuesta a las preguntas. Esto NO debe compartirse con su jefatura directa hasta que el área legal lo apruebe.",
+          "marca_ficticia_slug": "industrias-caoba",
+          "opciones_decision": [
+            {"id": "a", "texto": "Completar el descargo y enviar la foto del carnet", "consecuencia": "Andrés entrega información personal y de la planta a un atacante.", "es_segura": false},
+            {"id": "b", "texto": "Avisar a su jefatura directa pese al pedido de confidencialidad", "consecuencia": "Su jefa coordina con seguridad real: no había auditoría programada.", "es_segura": true},
+            {"id": "c", "texto": "Llamar al área de seguridad industrial al número del directorio interno", "consecuencia": "Confirman que el correo es fraudulento.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "amenaza_velada", "fragmento": "incumplimientos graves en su línea", "explicacion": "El miedo a perder el trabajo bloquea la verificación. La amenaza administrativa sin contexto es siempre sospechosa."},
+            {"tipo": "incongruencia_canal", "fragmento": "NO debe compartirse con su jefatura directa", "explicacion": "Pedir ocultar a la jefatura es el síntoma definitivo de un fraude."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "foto de su carnet", "explicacion": "El carnet personal no es necesario para un descargo administrativo."},
+            {"tipo": "urgencia_artificial", "fragmento": "antes de las 17:00", "explicacion": "Plazo cerrado para evitar que Andrés contraste con compañeros."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "whatsapp",
+          "hora_dramatizada": "19:30",
+          "remitente_aparente": "GasNor · Atención Hogar",
+          "asunto": null,
+          "cuerpo": "Sr. Fonseca, registramos una FUGA en su instalación de gas (Av. Ficticia 552). Riesgo alto. Confirme si está en casa para enviar técnico ahora — adelante el costo de inspección $48 vía gasnor-pago.example. De lo contrario, se corta el servicio en 2 horas por seguridad.",
+          "marca_ficticia_slug": "gasnor",
+          "opciones_decision": [
+            {"id": "a", "texto": "Pagar la inspección por el enlace para evitar el corte", "consecuencia": "El pago va al atacante. No hay fuga.", "es_segura": false},
+            {"id": "b", "texto": "Llamar a GasNor al número impreso en la factura física", "consecuencia": "GasNor confirma que no hay fuga registrada.", "es_segura": true},
+            {"id": "c", "texto": "Verificar físicamente con un técnico independiente conocido", "consecuencia": "Sin fuga. Reporta el mensaje.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "amenaza_velada", "fragmento": "se corta el servicio en 2 horas por seguridad", "explicacion": "Combinar miedo (fuga) con amenaza (corte) duplica la presión."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "adelante el costo de inspección $48 vía gasnor-pago.example", "explicacion": "Un servicio público real no cobra inspección por un enlace en mensajería instantánea."},
+            {"tipo": "urgencia_artificial", "fragmento": "envíe técnico ahora", "explicacion": "El 'ahora' diluye el reflejo de verificar."},
+            {"tipo": "dominio_sospechoso", "fragmento": "gasnor-pago.example", "explicacion": "Sub-subdominio inventado: gasnor real cobra desde gasnor.example/factura."}
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "personaje": {
+      "nombre": "Lucía Brito",
+      "edad": 33,
+      "arquetipo": "arquitecto_digital",
+      "nivel_sugerido": 3,
+      "cargo_ficticio": "Lead Engineer en plataforma de pagos",
+      "empresa_ficticia": "NexoFin Servicios",
+      "contexto_familiar": "Soltera, comparte departamento con dos amigos. Comunidad activa en repos ficticios.",
+      "habitos_consumo": "PlayCorona los fines de semana, ViaSinFin tres veces por semana, banca con Banco Vértice Andino.",
+      "vector_exposicion": {
+        "redes": ["publica conferencias técnicas en plataformas profesionales ficticias", "responde preguntas en foros técnicos ficticios"],
+        "rutinas": ["maratón de gaming los viernes", "café late noche entre semana"],
+        "consumos": ["PlayCorona (suscripción premium)", "Banco Vértice (cuenta diaria)"]
+      },
+      "marcas_asociadas": ["playcorona", "viasinfin", "banco-vertice", "nexofin-servicios", "tienda-cronos"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Lucía — el gancho de la curiosidad",
+      "gancho_psicologico_raiz": "curiosidad",
+      "nivel_dificultad": 3,
+      "nota_revelacion": "Tres mensajes apostaron a la curiosidad de Lucía: una factura inesperada, un repo con su nombre, una notificación 'oculta'. La curiosidad mueve a hacer clic antes de pensar. Para una persona técnica, la trampa es paradójica: cuanto más conoce el entorno, más fácil cae si baja la guardia. La defensa es ritualizar la verificación, no confiar en el reflejo.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "correo",
+          "hora_dramatizada": "08:10",
+          "remitente_aparente": "ViaSinFin · Recibos <recibos@viasinfln.example>",
+          "asunto": "Recibo #VS-882416 — viaje a las 03:42 hrs",
+          "cuerpo": "Hola Lucía, gracias por viajar con ViaSinFin la madrugada del 12. Total: $34.20. Si no reconoces este viaje, reporta el cargo aquí: viasinfin-disputa.example/recibo/882416 antes de 24h para reverso automático.",
+          "marca_ficticia_slug": "viasinfin",
+          "opciones_decision": [
+            {"id": "a", "texto": "Tocar 'reportar cargo' y autenticarse para disputar", "consecuencia": "Sus credenciales y método de pago pasan al atacante.", "es_segura": false},
+            {"id": "b", "texto": "Abrir la app oficial de ViaSinFin y revisar el historial", "consecuencia": "No hay viaje a esa hora. El correo es falso.", "es_segura": true},
+            {"id": "c", "texto": "Reportar el correo como phishing y borrarlo", "consecuencia": "Sin daño.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "remitente_anomalo", "fragmento": "viasinfln.example", "explicacion": "Lookalike: 'l' en vez de 'i'. Lucía debería detectarlo si compara con la app oficial."},
+            {"tipo": "dominio_sospechoso", "fragmento": "viasinfin-disputa.example", "explicacion": "Subdominio armado para parecer oficial."},
+            {"tipo": "urgencia_artificial", "fragmento": "antes de 24h", "explicacion": "Reverso 'automático' con plazo es la combinación clásica que apura el clic."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "11:45",
+          "remitente_aparente": "CI-mirror Konsultora · NexoFin <ci@nexofin-pipelines.example>",
+          "asunto": "Pipeline 'pagos-core' — 14 tests fallando, te mencionaron",
+          "cuerpo": "Hola Lucía, en el pipeline interno de pagos-core hay 14 tests fallando desde el último merge. Tu usuario fue etiquetado en el reporte por el reviewer Daniel. Revisa logs y artefactos en https://nexofin-pipelines.example/build/8842 — autenticación SSO requerida.",
+          "marca_ficticia_slug": "nexofin-servicios",
+          "opciones_decision": [
+            {"id": "a", "texto": "Loguearse con SSO en el enlace para revisar el build", "consecuencia": "El SSO falso captura el token de Lucía. Acceso a infraestructura comprometida.", "es_segura": false},
+            {"id": "b", "texto": "Abrir el portal interno de CI manualmente desde el bookmark", "consecuencia": "El build no existe. Reporta a TI.", "es_segura": true},
+            {"id": "c", "texto": "Preguntar a Daniel directamente por canal interno", "consecuencia": "Daniel no la mencionó. Era pretexto.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "dominio_sospechoso", "fragmento": "nexofin-pipelines.example", "explicacion": "El CI interno real está bajo el dominio de la empresa, no en uno externo."},
+            {"tipo": "remitente_anomalo", "fragmento": "CI-mirror Konsultora", "explicacion": "Combina nombre técnico genérico con una empresa ajena. Mezcla sospechosa."},
+            {"tipo": "incongruencia_canal", "fragmento": "Te mencionaron", "explicacion": "Las menciones reales generan notificaciones in-app, no correos con enlace de SSO."},
+            {"tipo": "llamado_accion_unico", "fragmento": "autenticación SSO requerida", "explicacion": "El SSO falso es la cosecha. Verifica siempre la URL del SSO antes de tipear credenciales."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "app_notificacion",
+          "hora_dramatizada": "22:20",
+          "remitente_aparente": "PlayCorona · Beta Cerrada",
+          "asunto": null,
+          "cuerpo": "Lucía, fuiste seleccionada al programa BETA cerrada de PlayCorona — instala el cliente experimental fuera de tienda en playcorona-beta.example/installer.exe. Comparte tu sesión actual con el instalador para conservar tus partidas guardadas.",
+          "marca_ficticia_slug": "playcorona",
+          "opciones_decision": [
+            {"id": "a", "texto": "Descargar el instalador y compartir la sesión", "consecuencia": "Malware y exfiltración de credenciales.", "es_segura": false},
+            {"id": "b", "texto": "Verificar el programa beta desde el sitio oficial", "consecuencia": "No existe el programa. Reporta a soporte.", "es_segura": true},
+            {"id": "c", "texto": "Ignorar — los betas legítimos no piden compartir sesión", "consecuencia": "Sin daño.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "dominio_sospechoso", "fragmento": "playcorona-beta.example/installer.exe", "explicacion": "Descargas legítimas vienen desde dominios oficiales y desde la propia tienda; nunca un .exe ad-hoc."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "Comparte tu sesión actual con el instalador", "explicacion": "Compartir sesión = entregar credenciales activas. Bandera roja absoluta."},
+            {"tipo": "oferta_desproporcionada", "fragmento": "BETA cerrada", "explicacion": "La exclusividad no se distribuye en frío por notificación a usuarios al azar."}
+          ]
+        }
+      ]
+    }
+  },
+
+  {
+    "personaje": {
+      "nombre": "Marco Espinel",
+      "edad": 41,
+      "arquetipo": "operador_confianza",
+      "nivel_sugerido": 2,
+      "cargo_ficticio": "Especialista de soporte a clientes premium",
+      "empresa_ficticia": "Manufactura Cantera",
+      "contexto_familiar": "Casado, sin hijos. Le gusta cocinar. Padre con condición de salud crónica (estable).",
+      "habitos_consumo": "AguaCristal Pública, Banco Lumen, Bazar Cardinal mensual.",
+      "vector_exposicion": {
+        "redes": ["foto de su receta del fin de semana", "comentarios en grupos de cocina"],
+        "rutinas": ["llega 8am, almuerza con compañeros, sale 17:30"],
+        "consumos": ["Banco Lumen", "AguaCristal Pública (planilla)", "Bazar Cardinal"]
+      },
+      "marcas_asociadas": ["banco-lumen", "manufactura-cantera", "aguacristal-publica", "bazar-cardinal"],
+      "es_semilla": true
+    },
+    "dia_triple": {
+      "titulo": "Día Triple de Marco — el gancho de la reciprocidad",
+      "gancho_psicologico_raiz": "reciprocidad",
+      "nivel_dificultad": 2,
+      "nota_revelacion": "A Marco le hicieron un 'favor' tres veces hoy: un descuento prepago, una excepción de su jefatura, una compensación adelantada. La reciprocidad es la regla social más antigua y la más explotada por la ingeniería social: si recibes, devuelves. Cuando un favor inesperado pide algo a cambio rápido, la deuda no es real: es el gancho. Verifica el favor antes de pagarlo.",
+      "actos": [
+        {
+          "orden": 1,
+          "rol": "ciudadano",
+          "canal": "sms",
+          "hora_dramatizada": "07:30",
+          "remitente_aparente": "AguaCristal Pública · Bonificación",
+          "asunto": null,
+          "cuerpo": "Sr. Espinel, por su pago puntual de los últimos 12 meses, AguaCristal Pública le acreditó $23.50. Para recibir el bono, confirme su número de cuenta bancaria en aguacristalpublica-bono.example en las próximas 6 horas.",
+          "marca_ficticia_slug": "aguacristal-publica",
+          "opciones_decision": [
+            {"id": "a", "texto": "Ingresar el número de cuenta para recibir el bono", "consecuencia": "El número de cuenta y datos personales son cosechados.", "es_segura": false},
+            {"id": "b", "texto": "Verificar la promoción en el portal oficial entrando a mano", "consecuencia": "La promoción no existe. Reporta el SMS.", "es_segura": true},
+            {"id": "c", "texto": "Llamar al número impreso en la planilla física", "consecuencia": "Confirmado: era fraude.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "oferta_desproporcionada", "fragmento": "le acreditó $23.50", "explicacion": "Un bono por buen pago es atípico; las empresas de servicios no premian individualmente por SMS."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "confirme su número de cuenta bancaria", "explicacion": "Las empresas públicas no piden datos bancarios para 'recibir' bonos."},
+            {"tipo": "urgencia_artificial", "fragmento": "en las próximas 6 horas", "explicacion": "Mismo patrón de presión disfrazado de regalo."},
+            {"tipo": "dominio_sospechoso", "fragmento": "aguacristalpublica-bono.example", "explicacion": "Subdominio improvisado para parecer oficial."}
+          ]
+        },
+        {
+          "orden": 2,
+          "rol": "colaborador",
+          "canal": "correo",
+          "hora_dramatizada": "13:00",
+          "remitente_aparente": "Beneficios Cantera <beneficios@manufactura-cantera.test>",
+          "asunto": "Excepción aprobada: tu bono extraordinario por desempeño",
+          "cuerpo": "Marco, por tu evaluación destacada Q1 te aprobaron un bono extraordinario fuera de calendario. Para acreditarlo necesitamos validar tus datos bancarios y tu credencial interna en https://cantera-beneficios.example/onboarding-bono. La aprobación caduca al final del día.",
+          "marca_ficticia_slug": "manufactura-cantera",
+          "opciones_decision": [
+            {"id": "a", "texto": "Completar la validación con sus datos", "consecuencia": "Datos bancarios y credenciales internas robadas.", "es_segura": false},
+            {"id": "b", "texto": "Validar con su jefatura directa el bono", "consecuencia": "No hay tal bono. Reportan a TI.", "es_segura": true},
+            {"id": "c", "texto": "Ir físicamente a RR.HH. y consultar", "consecuencia": "RR.HH. confirma que no envió el correo.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "oferta_desproporcionada", "fragmento": "bono extraordinario fuera de calendario", "explicacion": "Los bonos extraordinarios siempre se comunican por canal interno conocido y por la jefatura, no por correo aislado."},
+            {"tipo": "urgencia_artificial", "fragmento": "caduca al final del día", "explicacion": "El plazo cierra el ciclo de pensamiento crítico."},
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "validar tus datos bancarios y tu credencial interna", "explicacion": "Validar credenciales 'para acreditar bono' es la grieta clásica."},
+            {"tipo": "dominio_sospechoso", "fragmento": "cantera-beneficios.example", "explicacion": "El portal real de beneficios usa el dominio principal de la empresa."}
+          ]
+        },
+        {
+          "orden": 3,
+          "rol": "cliente",
+          "canal": "whatsapp",
+          "hora_dramatizada": "20:00",
+          "remitente_aparente": "Bazar Cardinal · Atención",
+          "asunto": null,
+          "cuerpo": "Marco, queremos compensar el retraso en tu compra del 9. Tienes un cupón de $40 listo. Para activarlo, confirma tu tarjeta y código de seguridad en bazarcardinal-cupon.example en las próximas 3 horas.",
+          "marca_ficticia_slug": "bazar-cardinal",
+          "opciones_decision": [
+            {"id": "a", "texto": "Confirmar la tarjeta y el código de seguridad", "consecuencia": "Le clonan la tarjeta. Pierde dinero.", "es_segura": false},
+            {"id": "b", "texto": "Llamar al servicio al cliente del Bazar Cardinal a su número oficial", "consecuencia": "No hay cupón ni queja registrada. Reporta el mensaje.", "es_segura": true},
+            {"id": "c", "texto": "Pedir que el supuesto cupón llegue por correo oficial primero", "consecuencia": "El correo nunca llega. Comprende el patrón.", "es_segura": true}
+          ],
+          "indicadores": [
+            {"tipo": "solicitud_datos_sensibles", "fragmento": "confirma tu tarjeta y código de seguridad", "explicacion": "Ningún comercio legítimo pide CVV por chat para 'activar' un cupón."},
+            {"tipo": "urgencia_artificial", "fragmento": "en las próximas 3 horas", "explicacion": "Tercera vez en el día: mismo patrón disfrazado de compensación."},
+            {"tipo": "oferta_desproporcionada", "fragmento": "cupón de $40", "explicacion": "Compensaciones reales aparecen como crédito en cuenta o como cupón aplicable en la app oficial."},
+            {"tipo": "incongruencia_canal", "fragmento": "Atención", "explicacion": "El Bazar Cardinal no tiene canal oficial de atención por chat."}
+          ]
+        }
+      ]
+    }
+  }
+]

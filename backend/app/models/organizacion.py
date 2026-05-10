@@ -2,7 +2,7 @@
 Organización cliente. Tenant lógico que agrupa facilitadores, usuarios,
 personajes propios y reportes agregados.
 """
-from sqlalchemy import String
+from sqlalchemy import String  # noqa
 from sqlalchemy.orm import Mapped, mapped_column
 
 from app.core.database import Base

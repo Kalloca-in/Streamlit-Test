@@ -8,10 +8,9 @@ la trampa. Cada Acto tiene 3-6 Indicadores detectables.
 from uuid import UUID
 
 from sqlalchemy import CheckConstraint, ForeignKey, Integer, String, Text, UniqueConstraint
-from sqlalchemy.dialects.postgresql import JSONB, UUID as PgUUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.core.database import Base
+from app.core.database import Base, GUID, JSONType
 from app.core.enums import (
     CanalAtaque,
     GanchoPsicologico,
@@ -32,7 +31,7 @@ class DiaTriple(UUIDPrimaryKey, Timestamped, Base):
     )
 
     personaje_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("personajes.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
@@ -63,7 +62,7 @@ class Acto(UUIDPrimaryKey, Timestamped, Base):
     )
 
     dia_triple_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("dias_triples.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
@@ -83,7 +82,7 @@ class Acto(UUIDPrimaryKey, Timestamped, Base):
 
     # Opciones de decisión que se ofrecen al usuario, formato:
     #   [{"id": "a", "texto": "...", "consecuencia": "...", "es_segura": bool}, ...]
-    opciones_decision: Mapped[list] = mapped_column(JSONB, nullable=False, default=list)
+    opciones_decision: Mapped[list] = mapped_column(JSONType, nullable=False, default=list)
 
     dia_triple: Mapped["DiaTriple"] = relationship("DiaTriple", back_populates="actos")
     indicadores: Mapped[list["Indicador"]] = relationship(
@@ -99,7 +98,7 @@ class Indicador(UUIDPrimaryKey, Timestamped, Base):
     __tablename__ = "indicadores"
 
     acto_id: Mapped[UUID] = mapped_column(
-        PgUUID(as_uuid=True),
+        GUID(),
         ForeignKey("actos.id", ondelete="CASCADE"),
         index=True,
         nullable=False,
