@@ -34,3 +34,9 @@ Thumbs.db
 
 # Local dev volumes
 .docker-data/
+
+# Frontend lockfile is regenerated; keep node_modules out
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/tsconfig.tsbuildinfo

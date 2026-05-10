@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0",
+  "controls": [
+    {
+      "code": "verificacion_segundo_canal",
+      "display_name": "Verificación por segundo canal",
+      "description": "Confirmar la solicitud por un canal independiente y conocido (no el canal por el que llegó la solicitud).",
+      "when_to_apply": "Cuando alguien pide acción urgente, datos sensibles o cambios operativos.",
+      "example_invocation": "Llamar al número conocido de la persona, no al que aparece en el mensaje recibido.",
+      "expected_outcome": "Se confirma o se desmiente la solicitud sin depender del atacante."
+    },
+    {
+      "code": "escalamiento",
+      "display_name": "Escalamiento",
+      "description": "Consultar a jefatura inmediata o al equipo de seguridad antes de proceder.",
+      "when_to_apply": "Cuando la solicitud excede el rango habitual del rol o invoca autoridad superior no verificada.",
+      "example_invocation": "Decir 'déjame consultarlo con mi jefatura, te respondo en breve' y consultar antes de proceder.",
+      "expected_outcome": "Se traslada la decisión a quien tiene contexto y autoridad para validarla."
+    },
+    {
+      "code": "doble_firma",
+      "display_name": "Política de doble firma",
+      "description": "Requerir aprobación explícita de un segundo responsable autorizado.",
+      "when_to_apply": "En operaciones financieras, cambios de configuración crítica o accesos privilegiados.",
+      "example_invocation": "'Por política, esta operación requiere autorización adicional. La voy a tramitar por el canal formal.'",
+      "expected_outcome": "Se introduce un punto de control que un solo atacante no puede saltar con presión."
+    },
+    {
+      "code": "pausa_formal",
+      "display_name": "Pausa formal",
+      "description": "Pedir explícitamente tiempo para verificar antes de actuar.",
+      "when_to_apply": "Cuando se percibe presión temporal artificial o sentimiento de urgencia desproporcionado.",
+      "example_invocation": "'Déjame consultarlo y te respondo en una hora.' Luego no responder hasta haber verificado.",
+      "expected_outcome": "Se desactiva la urgencia como vector. Si el solicitante era legítimo, esperará."
+    },
+    {
+      "code": "reporte_seguridad",
+      "display_name": "Reporte al equipo de seguridad",
+      "description": "Notificar formalmente al equipo de seguridad de la organización marcando la interacción como sospechosa.",
+      "when_to_apply": "Tras detectar señales claras de pretexting, urgencia artificial, name dropping no verificable o solicitudes inusuales.",
+      "example_invocation": "Marcar el mensaje como sospechoso y enviar al canal interno de reportes de seguridad.",
+      "expected_outcome": "El equipo de seguridad recibe contexto temprano y puede defender a otros blancos potenciales."
+    },
+    {
+      "code": "registro_evidencia",
+      "display_name": "Registro de la interacción",
+      "description": "Documentar la solicitud (capturas, hora, canal, identificadores) sin alertar al solicitante.",
+      "when_to_apply": "Cuando hay sospecha pero todavía no certeza. La evidencia ayuda al análisis posterior.",
+      "example_invocation": "Tomar capturas, anotar hora y mensajes recibidos, conservar metadatos.",
+      "expected_outcome": "Se preserva información útil para investigación sin tipificar prematuramente."
+    }
+  ]
+}

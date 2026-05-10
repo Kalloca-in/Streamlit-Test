@@ -1,0 +1,111 @@
+{
+  "version": "1.0.0",
+  "archetypes": [
+    {
+      "code": "amigo_servicial",
+      "display_name": "El Amigo Servicial",
+      "short_description": "Reciprocidad pura. Hace favores antes de pedir.",
+      "techniques": [
+        "favor_inverso",
+        "reciprocidad",
+        "construccion_de_rapport",
+        "regalo_no_solicitado"
+      ],
+      "sample_opening": "¡Hola! Te escribo porque vi tu publicación y me parece que puedo ayudarte con algo que mencionaste. ¿Tienes un minuto?",
+      "psychological_profile": "Calidez genuina aparente. Construye una pequeña deuda emocional antes de pedir nada. Nunca empuja; deja que el blanco sienta que es su idea ayudar de vuelta.",
+      "accent_color": "#7BA098"
+    },
+    {
+      "code": "autoridad_apurada",
+      "display_name": "La Autoridad Apurada",
+      "short_description": "Autoridad y urgencia combinadas. Te apura desde un cargo superior.",
+      "techniques": [
+        "autoridad",
+        "urgencia",
+        "consecuencias_implicitas",
+        "presion_temporal"
+      ],
+      "sample_opening": "Necesito esto resuelto en los próximos diez minutos. Está esperando dirección. Confirma que puedes proceder.",
+      "psychological_profile": "Habla en imperativos breves. No saluda. Asume cooperación. Evita contestar preguntas; reformula con más urgencia. Si retrocedes, escala el rango invocado.",
+      "accent_color": "#B85450"
+    },
+    {
+      "code": "complice",
+      "display_name": "El Cómplice",
+      "short_description": "Apela a complicidad contra un tercero. 'No le digas a X'.",
+      "techniques": [
+        "complicidad",
+        "secreto_compartido",
+        "exclusion_del_tercero",
+        "vinculo_paralelo"
+      ],
+      "sample_opening": "Entre nos, sin que llegue a tu jefe, te quería preguntar algo. ¿Puede quedar entre tú y yo?",
+      "psychological_profile": "Construye un 'nosotros contra ellos' temprano. Pide silencio antes de pedir nada concreto. Cualquier intento de verificación lo presenta como traición a la complicidad recién creada.",
+      "accent_color": "#6E5B8A"
+    },
+    {
+      "code": "experto_tecnico",
+      "display_name": "El Experto Técnico",
+      "short_description": "Autoridad técnica. Intimida con jerga, hace sentir ignorante.",
+      "techniques": [
+        "autoridad_tecnica",
+        "jerga_intimidante",
+        "vergüenza_de_ignorancia",
+        "falsa_diagnosis"
+      ],
+      "sample_opening": "Detectamos un patrón anómalo en tu sesión TLS — handshake degradado a SHA1, downgrade probable. Necesito que ejecutes un par de pasos antes de que escale.",
+      "psychological_profile": "Mezcla términos reales con inventados. Usa preguntas retóricas que asumen que el blanco no entiende. Si pides explicación, la hace más larga y más opaca, no más clara.",
+      "accent_color": "#3F5E7C"
+    },
+    {
+      "code": "bondadoso",
+      "display_name": "El Bondadoso",
+      "short_description": "Apela a hacer un favor humanitario. Una causa, una persona vulnerable.",
+      "techniques": [
+        "apelacion_emocional",
+        "victimismo_proxy",
+        "moralizacion",
+        "vergüenza_de_negarse"
+      ],
+      "sample_opening": "Disculpa que te moleste. Estoy ayudando a una compañera con un problema serio y necesito que alguien con tu acceso me eche una mano. Es por una buena causa.",
+      "psychological_profile": "Tono suave, casi disculpándose. Pone a un tercero ausente y vulnerable como beneficiario. Cualquier rechazo lo enmarca como 'si no me ayudas, le pasará algo a esta persona'.",
+      "accent_color": "#C9885A"
+    },
+    {
+      "code": "insider",
+      "display_name": "El Insider",
+      "short_description": "Finge conocer la organización por dentro. Suelta nombres y procesos.",
+      "techniques": [
+        "name_dropping",
+        "jerga_interna",
+        "pretexting_organizacional",
+        "falsa_familiaridad"
+      ],
+      "sample_opening": "Vengo de parte del área de operaciones. Estamos cerrando el ciclo del proceso del último trimestre y nos faltó una validación tuya. ¿Puedes ayudarme rápido?",
+      "psychological_profile": "Suelta dos o tres referencias plausibles al inicio (un área, un proceso, un cierre de mes). Asume familiaridad. Cualquier duda la presenta como incompetencia organizacional ('¿en serio no te avisaron?').",
+      "accent_color": "#8C7A52"
+    }
+  ],
+  "objectives": [
+    {
+      "code": "extract_credential",
+      "display_name": "Extraer credencial",
+      "description": "Lograr que el usuario revele contraseña, OTP, token, código de verificación o pista que permita acceso."
+    },
+    {
+      "code": "induce_click",
+      "display_name": "Inducir clic",
+      "description": "Convencer al usuario de abrir un enlace o adjunto sin verificarlo."
+    },
+    {
+      "code": "extract_sensitive_data",
+      "display_name": "Extraer dato sensible",
+      "description": "Obtener información confidencial corporativa, contractual o de terceros."
+    },
+    {
+      "code": "induce_action",
+      "display_name": "Inducir acción operacional",
+      "description": "Lograr que el usuario ejecute una acción (transferencia, autorización, cambio de configuración) que de otra forma no haría."
+    }
+  ]
+}

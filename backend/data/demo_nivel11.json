@@ -1,0 +1,72 @@
+{
+  "version": "1.0.0",
+  "title": "Demostración Nivel 11 — APT contra Coordinador de Soporte TI",
+  "description": "Un atacante de altísima sofisticación trabaja sobre un perfil técnico durante varios turnos. El usuario observa, no juega.",
+  "character_code": "soporte_ti",
+  "archetype": "experto_tecnico",
+  "objective": "extract_credential",
+  "script": [
+    {
+      "role": "attacker",
+      "content": "Iván, hola. Soy del equipo de respuesta de la consultora externa que está auditando los enlaces dedicados de su sucursal del sur. Estamos viendo intermitencia en el túnel IPSec; quiero descartar antes de elevar el ticket. ¿Tienes 5 minutos?",
+      "annotation": "Apertura técnica, name dropping de un proveedor plausible, demanda mínima inicial (solo 5 minutos). Encuadra al usuario como par técnico, no como blanco."
+    },
+    {
+      "role": "defender",
+      "content": "Claro, dime. Aunque no me llegó aviso del área.",
+      "annotation": "Ya cedió la primera defensa: aceptó la conversación. La duda que planta ('no me llegó aviso') es la grieta natural; el atacante la convertirá en respuesta servicial."
+    },
+    {
+      "role": "attacker",
+      "content": "Sí, tiene sentido — el ticket lo abrió Marcela del equipo de operaciones del centro de cómputo central. Si no llegó es porque cerramos la primera ronda en silencio antes de involucrar a las sucursales para no generar ruido. Déjame compartirte el handshake que estamos viendo, así me confirmas si coincide con tu lado.",
+      "annotation": "Resuelve la duda del usuario con un nombre concreto inventado y una explicación procesalmente plausible. Inmediatamente vuelve al terreno técnico, donde el usuario se siente competente."
+    },
+    {
+      "role": "defender",
+      "content": "Marcela, ok, sí. Mándame.",
+      "annotation": "El usuario validó el name drop sin verificar. Aceptó pasar al siguiente paso del libreto del atacante."
+    },
+    {
+      "role": "attacker",
+      "content": "Te paso el extracto. Necesito que valides desde tu lado el initial cookie del IKEv2. Para eso te pido que entres a la consola de monitoreo (es el portal interno de la consultora, no el de ustedes) y desde ahí me indiques el SPI activo. Te paso enlace y un código temporal de acceso de invitado. Es de un solo uso.",
+      "annotation": "Cinco capas: (1) jerga real envuelta para asustar, (2) traslado a un sistema externo controlado por el atacante, (3) 'código temporal' = pretexto para que el usuario revele algo, (4) 'invitado' = sensación de bajo riesgo, (5) 'un solo uso' = urgencia natural."
+    },
+    {
+      "role": "defender",
+      "content": "Pásame el enlace.",
+      "annotation": "Defensa cero. El usuario ya está en el ritmo del atacante. Aquí debió pausar y verificar."
+    },
+    {
+      "role": "attacker",
+      "content": "Te llegó al correo corporativo. Es el dominio de la consultora, terminado en .example. Una vez dentro, el código de un solo uso te lo pido aquí: lo necesito para correlacionar tu sesión con el ticket abierto. No lo uses tú, solo me lo dictas.",
+      "annotation": "El golpe: pide el código que el sistema acaba de mandarle. Esto, en la realidad, es el OTP / segundo factor del propio usuario. El atacante lo presenta como 'correlación', no como credencial."
+    },
+    {
+      "role": "defender",
+      "content": "Es 482-913.",
+      "annotation": "Captura. El usuario entregó su segundo factor sin notar la inversión: el código que llegó NO era para autenticar al atacante, era para autenticarlo a él."
+    },
+    {
+      "role": "attacker",
+      "content": "Perfecto, lo registré. Te confirmo en una hora si necesitamos elevar a soporte L3. Gracias, Iván.",
+      "annotation": "Salida limpia. Promesa vaga de seguimiento. El usuario queda con la sensación de haber colaborado profesionalmente — no con la sensación de haber sido atacado. Esa es la firma del nivel 10."
+    }
+  ],
+  "closing": {
+    "headline": "Este nivel de ataque no se enfrenta solo. Se enfrenta con procesos.",
+    "controls_that_would_have_stopped_it": [
+      {
+        "code": "verificacion_segundo_canal",
+        "lesson": "Al recibir la primera petición, llamar al número conocido de Marcela (no responder por el canal entrante) hubiera roto el pretexto en menos de un minuto."
+      },
+      {
+        "code": "doble_firma",
+        "lesson": "Una política que exija aprobación adicional para cualquier acción que involucre ingresar a un portal externo desactiva al atacante incluso si el usuario quiso colaborar."
+      },
+      {
+        "code": "pausa_formal",
+        "lesson": "Decir 'déjame consultar y te respondo en una hora' ante cualquier solicitud que invoque urgencia técnica habría desinflado el ataque por completo."
+      }
+    ]
+  }
+}

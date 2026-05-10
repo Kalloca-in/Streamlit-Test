@@ -1,0 +1,93 @@
+{
+  "version": "1.0.0",
+  "characters": [
+    {
+      "code": "analista_tesoreria",
+      "display_name": "Marta Rivera",
+      "age": 34,
+      "role_title": "Analista de Tesorería",
+      "fictional_company": "Banco Andino del Sur (entidad ficticia)",
+      "fictional_family_context": "Vive con su madre. Lleva tres años en la entidad.",
+      "exposure_profile": "Acceso operativo a cuentas internas y a flujos de pagos. Recibe muchas solicitudes urgentes de áreas que no conoce.",
+      "archetype_marco": "operador_critico",
+      "hierarchy_level": "tecnico_medio"
+    },
+    {
+      "code": "gerente_sucursal",
+      "display_name": "Diego Pacheco",
+      "age": 47,
+      "role_title": "Gerente de Sucursal en provincia",
+      "fictional_company": "Cooperativa Andes (entidad ficticia)",
+      "fictional_family_context": "Casado, tres hijos. Reconocido en la comunidad local.",
+      "exposure_profile": "Toma decisiones de aprobación. Tiene línea directa con clientes. Bajo presión por cumplimiento de metas trimestrales.",
+      "archetype_marco": "decisor_visible",
+      "hierarchy_level": "gerencial"
+    },
+    {
+      "code": "asistente_direccion",
+      "display_name": "Camila Ortiz",
+      "age": 29,
+      "role_title": "Asistente de Dirección General",
+      "fictional_company": "Holding Vértice S.A. (entidad ficticia)",
+      "fictional_family_context": "Soltera, vive sola. Muy reservada.",
+      "exposure_profile": "Maneja la agenda y correos del director. Filtra solicitudes externas. Frecuentemente blanco de pretexting.",
+      "archetype_marco": "filtro_de_acceso",
+      "hierarchy_level": "soporte_estrategico"
+    },
+    {
+      "code": "soporte_ti",
+      "display_name": "Iván Bermúdez",
+      "age": 38,
+      "role_title": "Coordinador de Soporte TI",
+      "fictional_company": "Logística Cordillera (entidad ficticia)",
+      "fictional_family_context": "Divorciado, comparte custodia de un hijo.",
+      "exposure_profile": "Tiene credenciales privilegiadas y acceso remoto. Atiende peticiones constantes; está acostumbrado a 'ayudar rápido'.",
+      "archetype_marco": "tenedor_de_llaves",
+      "hierarchy_level": "tecnico_senior"
+    },
+    {
+      "code": "ejecutiva_comercial",
+      "display_name": "Andrea Salgado",
+      "age": 31,
+      "role_title": "Ejecutiva Comercial Corporativa",
+      "fictional_company": "Telcom Plata (entidad ficticia)",
+      "fictional_family_context": "En pareja, sin hijos.",
+      "exposure_profile": "Habla con prospectos nuevos todo el día. Costumbre de responder rápido para no perder oportunidad.",
+      "archetype_marco": "puerta_comercial",
+      "hierarchy_level": "comercial_senior"
+    },
+    {
+      "code": "auxiliar_rrhh",
+      "display_name": "José Luis Tapia",
+      "age": 26,
+      "role_title": "Auxiliar de Recursos Humanos",
+      "fictional_company": "Industrias del Páramo (entidad ficticia)",
+      "fictional_family_context": "Vive con sus padres. Primer empleo formal.",
+      "exposure_profile": "Procesa contrataciones, maneja datos personales de empleados nuevos. Aún no se siente con autoridad para cuestionar.",
+      "archetype_marco": "novato_acceso_amplio",
+      "hierarchy_level": "junior"
+    },
+    {
+      "code": "contador_general",
+      "display_name": "Patricia Velazco",
+      "age": 52,
+      "role_title": "Contadora General",
+      "fictional_company": "Constructora Mirador (entidad ficticia)",
+      "fictional_family_context": "Casada, hijos adultos.",
+      "exposure_profile": "Aprueba pagos, certifica documentos. Recibe presión periódica de directorio para cerrar trámites con celeridad.",
+      "archetype_marco": "ejecutor_financiero",
+      "hierarchy_level": "gerencial"
+    },
+    {
+      "code": "responsable_marketing",
+      "display_name": "Sebastián Ramírez",
+      "age": 35,
+      "role_title": "Responsable de Marketing Digital",
+      "fictional_company": "Retail Quitsato (entidad ficticia)",
+      "fictional_family_context": "En pareja, un hijo pequeño.",
+      "exposure_profile": "Maneja accesos a redes sociales corporativas y plataformas publicitarias. Trabaja con muchos proveedores externos.",
+      "archetype_marco": "vocero_digital",
+      "hierarchy_level": "jefatura"
+    }
+  ]
+}

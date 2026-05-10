@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #F4F1EA;
+  --ink: #1B1A1F;
+}
+
+html, body {
+  background-color: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all duration-150
+           border border-ink/20 bg-bone text-ink hover:bg-ink hover:text-paper hover:border-ink;
+  }
+  .btn-primary {
+    @apply btn bg-ink text-paper border-ink hover:bg-paper hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn bg-transparent border-transparent hover:bg-bone hover:text-ink;
+  }
+  .card {
+    @apply rounded-lg border border-ink/15 bg-paper p-6 shadow-sm;
+  }
+  .badge-ephemeral {
+    @apply inline-flex items-center gap-2 rounded-full bg-ink/95 text-paper text-xs px-3 py-1 font-mono;
+  }
+  .chat-bubble {
+    @apply rounded-2xl px-4 py-3 max-w-[78%] text-sm leading-relaxed shadow-sm;
+  }
+  .chat-bubble-attacker {
+    @apply chat-bubble bg-bone text-ink rounded-tl-sm;
+  }
+  .chat-bubble-defender {
+    @apply chat-bubble bg-ink text-paper rounded-tr-sm self-end;
+  }
+  .chat-bubble-system {
+    @apply text-xs italic text-ink/60 self-center max-w-full text-center px-3 py-2 bg-paper border border-dashed border-ink/20 rounded-md;
+  }
+}

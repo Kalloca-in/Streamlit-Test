@@ -1,0 +1,66 @@
+# Full app stack — backend + frontend + redis + postgres.
+# Run: docker compose up --build
+#
+# Required env: ANTHROPIC_API_KEY (export before running, or set in .env)
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ciberspar-redis
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    # Non-durable on purpose: sessions are ephemeral by design.
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: ciberspar-postgres
+    environment:
+      POSTGRES_USER: ciberspar
+      POSTGRES_PASSWORD: ciberspar
+      POSTGRES_DB: ciberspar
+    volumes:
+      - ciberspar-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ciberspar"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: ciberspar-backend
+    depends_on:
+      redis:
+        condition: service_healthy
+      postgres:
+        condition: service_healthy
+    environment:
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      CIBERSPAR_MODEL: ${CIBERSPAR_MODEL:-claude-sonnet-4-6}
+      CIBERSPAR_MODEL_FAST: ${CIBERSPAR_MODEL_FAST:-claude-haiku-4-5-20251001}
+      REDIS_URL: redis://redis:6379/0
+      POSTGRES_DSN: postgresql+asyncpg://ciberspar:ciberspar@postgres:5432/ciberspar
+      CIBERSPAR_ENV: dev
+      CIBERSPAR_CORS_ORIGINS: http://localhost:3000
+      SESSION_TTL_SECONDS: 1800
+      AGGREGATION_MIN_N: 10
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: ciberspar-frontend
+    depends_on:
+      - backend
+    environment:
+      NEXT_PUBLIC_API_BASE: http://localhost:8000
+      NEXT_PUBLIC_WS_BASE: ws://localhost:8000
+    ports:
+      - "3000:3000"
+
+volumes:
+  ciberspar-pg:

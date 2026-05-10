@@ -2,19 +2,30 @@
 
 from __future__ import annotations
 
+import logging
 from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from sqlalchemy.exc import OperationalError
 
 from app.clients.redis_client import close_redis
 from app.config import get_settings
-from app.db.session import dispose_engine
-from app.routers import health
+from app.db.base import Base
+from app.db.session import dispose_engine, get_engine
+from app.routers import debrief, demo, facilitator, health, sessions, sparring
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
+    # Best-effort schema bootstrap. If Postgres is unavailable in dev,
+    # the app still serves Redis-only flows.
+    try:
+        engine = get_engine()
+        async with engine.begin() as conn:
+            await conn.run_sync(Base.metadata.create_all)
+    except OperationalError:
+        logging.warning("Postgres unavailable on startup; metrics disabled.")
     yield
     await close_redis()
     await dispose_engine()
@@ -39,6 +50,11 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(health.router)
+    app.include_router(sessions.router)
+    app.include_router(sparring.router)
+    app.include_router(debrief.router)
+    app.include_router(demo.router)
+    app.include_router(facilitator.router)
     return app
 
 

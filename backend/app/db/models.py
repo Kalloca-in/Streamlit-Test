@@ -83,7 +83,7 @@ class SessionOutcome(Base):
 
     __tablename__ = "session_outcomes"
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer(), "sqlite"), primary_key=True, autoincrement=True)
     iso_year: Mapped[int] = mapped_column(Integer, nullable=False)
     iso_week: Mapped[int] = mapped_column(Integer, nullable=False)
     org_slug: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
@@ -115,7 +115,7 @@ class HookOutcome(Base):
 
     __tablename__ = "hook_outcomes"
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer(), "sqlite"), primary_key=True, autoincrement=True)
     iso_year: Mapped[int] = mapped_column(Integer, nullable=False)
     iso_week: Mapped[int] = mapped_column(Integer, nullable=False)
     org_slug: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
@@ -136,7 +136,7 @@ class SafetyInterception(Base):
 
     __tablename__ = "safety_interceptions"
 
-    id: Mapped[int] = mapped_column(BigInteger, primary_key=True)
+    id: Mapped[int] = mapped_column(BigInteger().with_variant(Integer(), "sqlite"), primary_key=True, autoincrement=True)
     iso_year: Mapped[int] = mapped_column(Integer, nullable=False)
     iso_week: Mapped[int] = mapped_column(Integer, nullable=False)
     org_slug: Mapped[str] = mapped_column(String(64), nullable=False, index=True)
