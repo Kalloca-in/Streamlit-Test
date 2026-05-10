@@ -33,3 +33,9 @@ Thumbs.db
 postgres-data/
 frontend/tsconfig.tsbuildinfo
 .next/
+
+# SQLite local (dev/demo)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
