@@ -1,0 +1,14 @@
+.env
+.env.local
+.env.*.local
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.streamlit/secrets.toml
+logs/*.jsonl
+!logs/.gitkeep
+.DS_Store
+.idea/
+.vscode/
