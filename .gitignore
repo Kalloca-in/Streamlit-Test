@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.env
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Next.js (Bloques 6+)
+node_modules/
+.next/
+.turbo/
+dist/
+build/
+.npm
+.pnpm-store/
+.yarn/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local DB volumes (Bloque 12 docker-compose)
+postgres-data/
