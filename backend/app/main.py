@@ -7,8 +7,6 @@ from contextlib import asynccontextmanager
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from sqlalchemy.exc import OperationalError
-
 from app.clients.redis_client import close_redis
 from app.config import get_settings
 from app.db.base import Base
@@ -24,11 +22,14 @@ async def lifespan(app: FastAPI):
         engine = get_engine()
         async with engine.begin() as conn:
             await conn.run_sync(Base.metadata.create_all)
-    except OperationalError:
-        logging.warning("Postgres unavailable on startup; metrics disabled.")
+    except Exception as e:
+        logging.warning("Postgres unavailable on startup (%s); metrics disabled.", type(e).__name__)
     yield
     await close_redis()
-    await dispose_engine()
+    try:
+        await dispose_engine()
+    except Exception:
+        pass
 
 
 def create_app() -> FastAPI:
