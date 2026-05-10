@@ -1,0 +1,37 @@
+# Local development infra only. Application containers come in Block 11.
+# Run with: docker compose -f docker-compose.dev.yml up -d
+
+services:
+  redis:
+    image: redis:7-alpine
+    container_name: ciberspar-redis
+    ports:
+      - "6379:6379"
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    # save "" + no AOF: Redis is intentionally non-durable here. Sessions
+    # are ephemeral by design; durability would violate the model.
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: ciberspar-postgres
+    environment:
+      POSTGRES_USER: ciberspar
+      POSTGRES_PASSWORD: ciberspar
+      POSTGRES_DB: ciberspar
+    ports:
+      - "5432:5432"
+    volumes:
+      - ciberspar-pg:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ciberspar"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+volumes:
+  ciberspar-pg:
