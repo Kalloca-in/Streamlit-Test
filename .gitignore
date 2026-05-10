@@ -31,3 +31,5 @@ Thumbs.db
 
 # Local DB volumes (Bloque 12 docker-compose)
 postgres-data/
+frontend/tsconfig.tsbuildinfo
+.next/

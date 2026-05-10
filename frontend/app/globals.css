@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html, body {
+  background: theme(colors.background);
+  color: theme(colors.ink);
+  font-family: theme(fontFamily.sans);
+}
+
+.serif { font-family: theme(fontFamily.serif); }
+
+.disclaimer-bar {
+  background: rgba(204, 61, 61, 0.08);
+  border-bottom: 1px solid rgba(204, 61, 61, 0.35);
+  color: #f5b8b8;
+}
+
+.role-pill {
+  @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium tracking-wide;
+}
+
+.role-pill--ciudadano  { background: rgba(217,119,87,.15); color: theme(colors.ciudadano); border: 1px solid rgba(217,119,87,.35); }
+.role-pill--colaborador { background: rgba(91,154,160,.15); color: theme(colors.colaborador); border: 1px solid rgba(91,154,160,.35); }
+.role-pill--cliente     { background: rgba(180,141,74,.15); color: theme(colors.cliente); border: 1px solid rgba(180,141,74,.35); }
+
+.btn {
+  @apply px-5 py-3 rounded-xl font-medium transition-colors;
+}
+.btn-primary {
+  @apply btn bg-accent text-background hover:bg-yellow-400;
+}
+.btn-ghost {
+  @apply btn border border-white/10 hover:bg-white/5 text-ink;
+}
+
+.card {
+  @apply rounded-2xl bg-paper border border-white/5 p-6;
+}

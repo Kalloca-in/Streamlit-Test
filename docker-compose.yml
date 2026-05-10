@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ciberteatro
+      POSTGRES_PASSWORD: ciberteatro
+      POSTGRES_DB: ciberteatro
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ciberteatro"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://ciberteatro:ciberteatro@db:5432/ciberteatro
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-sonnet-4-5}
+      SECRET_KEY: ${SECRET_KEY:-cambia-esto}
+      FRONTEND_ORIGINS: http://localhost:3000
+      MIN_AGGREGATE_N: "10"
+      MAX_DIFFICULTY: "3"
+      ENVIRONMENT: development
+    ports:
+      - "8000:8000"
+
+  seed:
+    build: ./backend
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg://ciberteatro:ciberteatro@db:5432/ciberteatro
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ENVIRONMENT: development
+    command: ["python", "-m", "app.seed"]
+    restart: "no"
+
+  frontend:
+    build: ./frontend
+    depends_on:
+      - backend
+    environment:
+      BACKEND_URL: http://backend:8000
+    ports:
+      - "3000:3000"
+
+volumes:
+  postgres-data:
