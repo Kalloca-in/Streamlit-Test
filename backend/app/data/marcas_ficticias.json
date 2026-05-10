@@ -1,0 +1,248 @@
+[
+  {
+    "slug": "banco-ribera-sur",
+    "nombre": "Banco Ribera Sur",
+    "sector": "banco",
+    "dominio": "bancoriberasur.example",
+    "logo_placeholder": "/logos/banco-ribera-sur.svg",
+    "descripcion": "Banco ficticio de banca personal y empresarial. Plaza visible en aplicaciones móviles, notificaciones de transferencia y SMS de seguridad."
+  },
+  {
+    "slug": "banco-cordillera-del-sol",
+    "nombre": "Banco Cordillera del Sol",
+    "sector": "banco",
+    "dominio": "cordilleradelsol.example",
+    "logo_placeholder": "/logos/banco-cordillera-del-sol.svg",
+    "descripcion": "Banco ficticio con foco en inversión y cuentas premium. Habitual en correos sobre 'movimientos sospechosos'."
+  },
+  {
+    "slug": "cooperativa-camino-real",
+    "nombre": "Cooperativa Camino Real",
+    "sector": "banco",
+    "dominio": "cooperativacaminoreal.example",
+    "logo_placeholder": "/logos/cooperativa-camino-real.svg",
+    "descripcion": "Cooperativa de ahorro y crédito ficticia. Usada para dramatizar fraudes a perfiles que confían en entidades comunitarias."
+  },
+  {
+    "slug": "banco-lumen",
+    "nombre": "Banco Lumen Patrimonial",
+    "sector": "banco",
+    "dominio": "bancolumen.example",
+    "logo_placeholder": "/logos/banco-lumen.svg",
+    "descripcion": "Banco ficticio enfocado en clientes ejecutivos y patrimonios medios."
+  },
+  {
+    "slug": "banco-vertice",
+    "nombre": "Banco Vértice Andino",
+    "sector": "banco",
+    "dominio": "bancovertice.example",
+    "logo_placeholder": "/logos/banco-vertice.svg",
+    "descripcion": "Banco ficticio con aplicación móvil y notificaciones push frecuentes; útil para escenarios de smishing por código OTP."
+  },
+
+  {
+    "slug": "mercadofacil",
+    "nombre": "MercadoFácil",
+    "sector": "retail",
+    "dominio": "mercadofacil.example",
+    "logo_placeholder": "/logos/mercadofacil.svg",
+    "descripcion": "Marketplace ficticio de productos diversos. Se usa para dramatizar fraudes de envío, devoluciones y suplantación del soporte."
+  },
+  {
+    "slug": "tienda-cronos",
+    "nombre": "Tienda Cronos",
+    "sector": "retail",
+    "dominio": "tiendacronos.example",
+    "logo_placeholder": "/logos/tienda-cronos.svg",
+    "descripcion": "Cadena ficticia de electrodomésticos y tecnología."
+  },
+  {
+    "slug": "almacenes-polaris",
+    "nombre": "Almacenes Polaris",
+    "sector": "retail",
+    "dominio": "almacenespolaris.example",
+    "logo_placeholder": "/logos/almacenes-polaris.svg",
+    "descripcion": "Cadena ficticia de retail general con tarjeta propia. Usada en fraudes con falsos cupones y promesas de descuento."
+  },
+  {
+    "slug": "bazar-cardinal",
+    "nombre": "Bazar Cardinal",
+    "sector": "retail",
+    "dominio": "bazarcardinal.example",
+    "logo_placeholder": "/logos/bazar-cardinal.svg",
+    "descripcion": "Tienda ficticia de bienes para el hogar; perfil de cliente con compras estacionales."
+  },
+  {
+    "slug": "compras-epoca",
+    "nombre": "Compras Época",
+    "sector": "retail",
+    "dominio": "comprasepoca.example",
+    "logo_placeholder": "/logos/compras-epoca.svg",
+    "descripcion": "Marketplace ficticio para emprendedores. Útil para dramatizar fraudes a vendedores 'pequeños'."
+  },
+
+  {
+    "slug": "electrica-cordillera",
+    "nombre": "Empresa Eléctrica Cordillera",
+    "sector": "utilities",
+    "dominio": "electricacordillera.example",
+    "logo_placeholder": "/logos/electrica-cordillera.svg",
+    "descripcion": "Distribuidora eléctrica ficticia. Habitual en intentos de phishing por 'corte por mora'."
+  },
+  {
+    "slug": "aguacristal-publica",
+    "nombre": "AguaCristal Pública",
+    "sector": "utilities",
+    "dominio": "aguacristalpublica.example",
+    "logo_placeholder": "/logos/aguacristal-publica.svg",
+    "descripcion": "Empresa ficticia de agua potable y alcantarillado de un municipio inventado."
+  },
+  {
+    "slug": "gasnor",
+    "nombre": "GasNor Distribución",
+    "sector": "utilities",
+    "dominio": "gasnor.example",
+    "logo_placeholder": "/logos/gasnor.svg",
+    "descripcion": "Distribuidora ficticia de gas doméstico. Usada en fraudes de 'verificación de instalación'."
+  },
+  {
+    "slug": "televertigo",
+    "nombre": "TeleVértigo Comunicaciones",
+    "sector": "utilities",
+    "dominio": "televertigo.example",
+    "logo_placeholder": "/logos/televertigo.svg",
+    "descripcion": "Operador ficticio de telefonía e internet. Plaza para fraudes con 'plan bonificado' y portabilidad."
+  },
+  {
+    "slug": "vialidad-del-sur",
+    "nombre": "Vialidad del Sur",
+    "sector": "utilities",
+    "dominio": "vialidaddelsur.example",
+    "logo_placeholder": "/logos/vialidad-del-sur.svg",
+    "descripcion": "Concesionaria vial ficticia. Habitual en fraudes por 'multas de peaje pendientes'."
+  },
+
+  {
+    "slug": "liceo-los-cedros",
+    "nombre": "Liceo Los Cedros",
+    "sector": "educacion",
+    "dominio": "liceoloscedros.example",
+    "logo_placeholder": "/logos/liceo-los-cedros.svg",
+    "descripcion": "Colegio ficticio. Útil en escenarios donde un padre/madre recibe un mensaje 'urgente' del colegio."
+  },
+  {
+    "slug": "universidad-atlantica-del-norte",
+    "nombre": "Universidad Atlántica del Norte",
+    "sector": "educacion",
+    "dominio": "uatlanticadelnorte.example",
+    "logo_placeholder": "/logos/uatlanticadelnorte.svg",
+    "descripcion": "Universidad ficticia para escenarios de estudiantes y egresados."
+  },
+  {
+    "slug": "colegio-san-rafael-lomas",
+    "nombre": "Colegio San Rafael de las Lomas",
+    "sector": "educacion",
+    "dominio": "csanrafaellomas.example",
+    "logo_placeholder": "/logos/csanrafaellomas.svg",
+    "descripcion": "Colegio ficticio de jornada matutina."
+  },
+  {
+    "slug": "instituto-aurora-del-valle",
+    "nombre": "Instituto Técnico Aurora del Valle",
+    "sector": "educacion",
+    "dominio": "auroradelvalle.example",
+    "logo_placeholder": "/logos/auroradelvalle.svg",
+    "descripcion": "Instituto técnico ficticio enfocado en formación dual."
+  },
+  {
+    "slug": "universidad-poligono",
+    "nombre": "Universidad Polígono",
+    "sector": "educacion",
+    "dominio": "upoligono.example",
+    "logo_placeholder": "/logos/upoligono.svg",
+    "descripcion": "Universidad ficticia con campus virtual y pago en línea de matrícula."
+  },
+
+  {
+    "slug": "atrio-logistica",
+    "nombre": "Atrio Logística",
+    "sector": "empleador",
+    "dominio": "atriologistica.test",
+    "logo_placeholder": "/logos/atrio-logistica.svg",
+    "descripcion": "Empresa ficticia empleadora del sector logístico. Útil como 'mi empresa' en escenarios de spearphishing al colaborador."
+  },
+  {
+    "slug": "konsultora-trebol",
+    "nombre": "Konsultora Trébol",
+    "sector": "empleador",
+    "dominio": "konsultoratrebol.test",
+    "logo_placeholder": "/logos/konsultora-trebol.svg",
+    "descripcion": "Consultora ficticia de servicios profesionales."
+  },
+  {
+    "slug": "industrias-caoba",
+    "nombre": "Industrias Caoba",
+    "sector": "empleador",
+    "dominio": "industriascaoba.test",
+    "logo_placeholder": "/logos/industrias-caoba.svg",
+    "descripcion": "Manufactura ficticia. Útil para dramatizar pretextos de 'gerencia de planta'."
+  },
+  {
+    "slug": "nexofin-servicios",
+    "nombre": "NexoFin Servicios",
+    "sector": "empleador",
+    "dominio": "nexofin.test",
+    "logo_placeholder": "/logos/nexofin.svg",
+    "descripcion": "Empresa ficticia de servicios financieros internos. Plaza para CEO fraud y BEC."
+  },
+  {
+    "slug": "manufactura-cantera",
+    "nombre": "Manufactura Cantera",
+    "sector": "empleador",
+    "dominio": "manufacturacantera.test",
+    "logo_placeholder": "/logos/manufactura-cantera.svg",
+    "descripcion": "Empresa ficticia. Útil cuando el personaje es un operario o jefe de turno."
+  },
+
+  {
+    "slug": "streamcolibri",
+    "nombre": "StreamColibrí",
+    "sector": "streaming",
+    "dominio": "streamcolibri.example",
+    "logo_placeholder": "/logos/streamcolibri.svg",
+    "descripcion": "Plataforma ficticia de streaming de video. Habitual en fraudes de 'tu suscripción venció'."
+  },
+  {
+    "slug": "audiocantares",
+    "nombre": "AudioCantares",
+    "sector": "streaming",
+    "dominio": "audiocantares.example",
+    "logo_placeholder": "/logos/audiocantares.svg",
+    "descripcion": "Servicio ficticio de streaming de música."
+  },
+  {
+    "slug": "playcorona",
+    "nombre": "PlayCorona",
+    "sector": "streaming",
+    "dominio": "playcorona.example",
+    "logo_placeholder": "/logos/playcorona.svg",
+    "descripcion": "Servicio ficticio de juegos por suscripción. Útil en fraudes a perfil 'gamer adolescente' o de hogar."
+  },
+
+  {
+    "slug": "rapidoya",
+    "nombre": "RápidoYa",
+    "sector": "delivery",
+    "dominio": "rapidoya.example",
+    "logo_placeholder": "/logos/rapidoya.svg",
+    "descripcion": "Aplicación ficticia de delivery. Plaza para fraudes de 'tu pedido fue cancelado'."
+  },
+  {
+    "slug": "viasinfin",
+    "nombre": "ViaSinFin",
+    "sector": "delivery",
+    "dominio": "viasinfin.example",
+    "logo_placeholder": "/logos/viasinfin.svg",
+    "descripcion": "Aplicación ficticia de transporte privado. Útil para fraudes a viajeros frecuentes."
+  }
+]
