@@ -14,7 +14,14 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from src import state
-from src.sections import acuerdo, alcance, login, planificacion
+from src.sections import (
+    acuerdo,
+    alcance,
+    exportacion,
+    generacion,
+    login,
+    planificacion,
+)
 
 load_dotenv()
 
@@ -30,7 +37,12 @@ SECTION_RENDERERS = {
     "acuerdo": acuerdo.render,
     "alcance": alcance.render,
     "planificacion": planificacion.render,
+    "generacion": generacion.render,
+    "exportacion": exportacion.render,
 }
+
+PROGRESS_ORDER = ["login", "acuerdo", "alcance", "planificacion", "generacion", "exportacion"]
+PROGRESS_LABELS = ["Acceso", "Acuerdo", "Alcance", "Planificación", "Generación", "Exportación"]
 
 
 def header() -> None:
@@ -43,19 +55,20 @@ def header() -> None:
 
 
 def progress() -> None:
-    """Barra de progreso entre secciones, solo informativa."""
-    order = ["login", "acuerdo", "alcance", "planificacion"]
     current = st.session_state.get("section", "login")
-    if current not in order:
+    if current not in PROGRESS_ORDER:
         return
-    idx = order.index(current)
-    cols = st.columns(len(order))
-    labels = ["Acceso", "Acuerdo", "Alcance", "Planificación"]
-    for i, (col, label) in enumerate(zip(cols, labels)):
+    idx = PROGRESS_ORDER.index(current)
+    cols = st.columns(len(PROGRESS_ORDER))
+    for i, (col, label) in enumerate(zip(cols, PROGRESS_LABELS)):
         with col:
             mark = "●" if i <= idx else "○"
             style = "**" if i == idx else ""
-            col.markdown(f"<div style='text-align:center'>{style}{mark} {label}{style}</div>", unsafe_allow_html=True)
+            col.markdown(
+                f"<div style='text-align:center;font-size:13px'>"
+                f"{style}{mark} {label}{style}</div>",
+                unsafe_allow_html=True,
+            )
 
 
 def sidebar() -> None:
@@ -72,12 +85,42 @@ def sidebar() -> None:
             st.caption("Sin sesión activa")
 
         st.divider()
+
+        if op:
+            st.markdown("### Navegación")
+            for sec, label in zip(PROGRESS_ORDER[1:], PROGRESS_LABELS[1:]):
+                disabled = not _can_visit(sec)
+                if st.button(label, key=f"nav_{sec}", disabled=disabled, use_container_width=True):
+                    state.goto(sec)
+            st.divider()
+
         st.markdown("### Esta plataforma")
         st.caption(
             "Prepara plantillas de phishing simulado para programas de "
             "awareness corporativo. **No envía mensajes.** No genera ataques "
             "personalizados contra individuos. No suplanta marcas reales."
         )
+
+
+def _can_visit(section: str) -> bool:
+    """Permite navegar solo a secciones cuyas dependencias están completas."""
+    deps = {
+        "acuerdo": ["operator"],
+        "alcance": ["operator", "acuerdo"],
+        "planificacion": ["operator", "acuerdo", "alcance"],
+        "generacion": ["operator", "acuerdo", "alcance"],
+        "exportacion": ["operator", "acuerdo", "alcance"],
+    }
+    needed = deps.get(section, [])
+    if section in {"generacion", "exportacion"}:
+        plan = st.session_state.get("planificacion")
+        if not plan or not plan.get("topics"):
+            return False
+    if section == "exportacion":
+        gen = st.session_state.get("generacion")
+        if not gen or not gen.get("templates"):
+            return False
+    return all(st.session_state.get(k) for k in needed)
 
 
 def footer() -> None:
@@ -90,7 +133,7 @@ def footer() -> None:
             "contactá al responsable interno de seguridad de tu organización."
         )
     with col2:
-        st.caption("Fase 1: Acceso y alcance")
+        st.caption("Plataforma de Awareness")
 
 
 def main() -> None:
@@ -113,7 +156,4 @@ def main() -> None:
     footer()
 
 
-if __name__ == "__main__":
-    main()
-else:
-    main()
+main()

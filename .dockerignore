@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.local
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+.pytest_cache
+logs/*.jsonl
+.DS_Store
+.vscode
+.idea
+tests
+README.md
+LEGAL.md
